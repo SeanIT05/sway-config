@@ -1,0 +1,57 @@
+general {
+  colors = true
+  color_good = "#a3be8c"
+  color_bad  = "#bf616a"
+  color_degraded = "#ebcb8b"
+  interval = 3
+  separator = "|"
+}
+
+disk "/" {
+  format = " %percentage_used"
+}
+
+cpu_usage {
+  format = " %usage"
+}
+
+battery 0 {
+        format = "%status %percentage"
+        status_bat = ""
+        status_chr = ""
+        status_full = ""
+        low_threshold = 30
+        threshold_type = percentage
+        integer_battery_capacity = true
+        color_good = "#0000FF"
+}
+
+wireless wlp1s0 {
+  format_up = " (%essid)"
+  format_down  = " down"
+}
+
+memory {
+  memory_used_method = classical
+  format=" %used"
+}
+
+volume master {
+    format = "  %volume "
+    format_muted = " %volume "
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+
+tztime local {
+        format = " %h %d, %Y %I:%M"
+}
+
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+order += "wireless wlp1s0"
+order += "tztime local"
+order += "volume master"
+order += "battery 0"
